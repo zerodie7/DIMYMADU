@@ -1,0 +1,11 @@
+*/Debug/*
+Debug/*.exe
+Debug/*.ilk
+Debug/*.pdb
+RemoteSystemsTempFiles/
+**/CEGUI.log
+.metadata/
+/DIMyRMADU.sdf
+/DIMyRMADU.v12.suo
+/DIMyRMADU.opensdf
+Debug/*.dll
