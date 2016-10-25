@@ -14,10 +14,12 @@
 
 #include "WindowManager.h"
 #include "Sphere.h"
+#include "Cube.h"
 #include "Shader.h"
 #include "CameraFPS.h"
 #include "TimeManager.h"
 #include "Model.h"
+#include "definition.h";
 
 class GLApplication {
 public:

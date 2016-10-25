@@ -56,7 +56,7 @@ bool GLFWManager::initialize(int width, int height, std::string strTitle,
 	glfwSetKeyCallback(window, keyCallback);
 	glfwSetCursorPosCallback(window, mouseCallback);
 	glfwSetMouseButtonCallback(window, mouseButtonCallback);
-	glfwSetScrollCallback(window, mouseScrollCallback);//TPS
+	glfwSetScrollCallback(window, mouseScrollCallback);
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// Init glew
@@ -117,7 +117,6 @@ void GLFWManager::mouseButtonCallback(GLFWwindow* window, int button, int state,
 			ypos, inputManager.toApplicationState(state));
 }
 
-//TPS
 void GLFWManager::mouseScrollCallback(GLFWwindow* window, double xoffset,
 	double yoffset) {
 	inputManager.mouseScroll(yoffset);

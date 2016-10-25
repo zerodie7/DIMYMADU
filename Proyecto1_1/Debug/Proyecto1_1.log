@@ -1,11 +1,18 @@
-﻿Compilación iniciada a las 20/10/2016 01:43:36 a. m..
-     1>Proyecto "c:\Users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Proyecto1_1\Proyecto1_1.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 10/25/2016 3:06:01 AM.
+     1>Proyecto "C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Proyecto1_1\Proyecto1_1.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../external/glm-0.9.5.2/glm" /I"../../external/glew-1.10.0-win32/glew-1.10.0/include" /I"../../external/glfw-3.1.bin.WIN32/include" /I"../../external/assimp-3.1.1/include" /I"../../external/freetype-2.3.5-1-bin/include" /I"../../external/freetype-2.3.5-1-bin/include/freetype2" /I../../external/FreeImage3170/FreeImage/Source /I../../external/AntTweakBar/include /I"../../external/cegui-0.8.7/cegui/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\main.cpp
-         main.cpp
-     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\inputmanager.h(86): warning C4244: 'argumento' : conversión de 'double' a 'const int'; posible pérdida de datos
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../../external/glm-0.9.5.2/glm" /I"../../external/glew-1.10.0-win32/glew-1.10.0/include" /I"../../external/glfw-3.1.bin.WIN32/include" /I"../../external/assimp-3.1.1/include" /I"../../external/freetype-2.3.5-1-bin/include" /I"../../external/freetype-2.3.5-1-bin/include/freetype2" /I../../external/FreeImage3170/FreeImage/Source /I../../external/AntTweakBar/include /I"../../external/cegui-0.8.7/cegui/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\GLApplication.cpp
+         GLApplication.cpp
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\camerafps.h(16): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\inputmanager.h(87): warning C4244: 'argumento' : conversión de 'double' a 'const int'; posible pérdida de datos
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\glapplication.h(22): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\collision.h(42): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\headers\collision.h(43): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\glapplication.cpp(180): warning C4244: 'inicializando' : conversión de 'double' a 'GLfloat'; posible pérdida de datos
+     1>c:\users\user0\documents\visual studio 2013\projects\dimyrmadu\proyecto1_1\src\glapplication.cpp(528): warning C4018: '<' : no coinciden signed/unsigned
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"../../external/glew-1.10.0-win32/glew-1.10.0/lib/Release/Win32" /LIBPATH:"../../external/glfw-3.1.bin.WIN32/lib-vc2012" /LIBPATH:"../../external/assimp-3.1.1/build/code/Debug" /LIBPATH:../../external/FreeImage3170/FreeImage/Dist/x32 /LIBPATH:"../../external/freetype-2.3.5-1-bin/lib" /LIBPATH:../../external/AntTweakBar/lib /LIBPATH:"../../external/cegui-0.8.7/build/lib" glew32.lib glfw3.lib opengl32.lib glu32.lib assimpd.lib FreeImaged.lib freetype.lib AntTweakBar.lib "CEGUIBase-0_d.lib" "CEGUIOpenGLRenderer-0_d.lib" CEGUICoreWindowRendererSet_d.lib CEGUISILLYImageCodec_d.lib CEGUIExpatParser_d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.lib" /MACHINE:X86 Debug\GLApplication.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"../../external/glew-1.10.0-win32/glew-1.10.0/lib/Release/Win32" /LIBPATH:"../../external/glfw-3.1.bin.WIN32/lib-vc2012" /LIBPATH:"../../external/assimp-3.1.1/build/code/Debug" /LIBPATH:../../external/FreeImage3170/FreeImage/Dist/x32 /LIBPATH:"../../external/freetype-2.3.5-1-bin/lib" /LIBPATH:../../external/AntTweakBar/lib /LIBPATH:"../../external/cegui-0.8.7/build/lib" glew32.lib glfw3.lib opengl32.lib glu32.lib assimpd.lib FreeImaged.lib freetype.lib AntTweakBar.lib "CEGUIBase-0_d.lib" "CEGUIOpenGLRenderer-0_d.lib" CEGUICoreWindowRendererSet_d.lib CEGUISILLYImageCodec_d.lib CEGUIExpatParser_d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.lib" /MACHINE:X86 Debug\Cube.obj
+         Debug\GLApplication.obj
          Debug\GLFWManager.obj
          Debug\InputManager.obj
          Debug\main.obj
@@ -15,10 +22,9 @@
          Debug\Sphere.obj
          Debug\Texture.obj
          Debug\TimeManager.obj
-     1>LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
-         Proyecto1_1.vcxproj -> c:\users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.exe
-     1>Compilación del proyecto terminada "c:\Users\user0\documents\visual studio 2013\Projects\DIMyRMADU\Proyecto1_1\Proyecto1_1.vcxproj" (Build destinos).
+         Proyecto1_1.vcxproj -> C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Debug\Proyecto1_1.exe
+     1>Compilación del proyecto terminada "C:\Users\user0\Documents\Visual Studio 2013\Projects\DIMyRMADU\Proyecto1_1\Proyecto1_1.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:14.46
+Tiempo transcurrido 00:00:08.47

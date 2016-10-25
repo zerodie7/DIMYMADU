@@ -45,6 +45,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Headers\CameraFPS.h">
@@ -89,12 +92,27 @@
     <ClInclude Include="src\Headers\WindowManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Headers\collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Headers\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\SUN.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\SUN_SPECULAR.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\container2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\container2_specular.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\pasto.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -121,6 +139,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Shaders\sistemascoordenados.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Shaders\materialLighting.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Shaders\materialLighting.vs">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

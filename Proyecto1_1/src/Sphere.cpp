@@ -1,15 +1,14 @@
 /*
- * Sphere.cpp
- *
- *  Created on: 06/09/2016
- *      Author: rey
- */
+* Sphere.cpp
+*
+*  Created on: 06/09/2016
+*      Author: rey
+*/
 
 #include "Headers/Sphere.h"
 
-Sphere::Sphere(float ratio, int slices, int stacks, MODEL_MODE mode) :
-		ratio(ratio), slices(slices), stacks(stacks), VAO(0), VBO(0), EBO(0), mode(
-				mode) {
+Sphere::Sphere(float ratio, int slices, int stacks, bool wire) :
+ratio(ratio), slices(slices), stacks(stacks), wire(wire), VAO(0), VBO(0), EBO(0) {
 }
 
 Sphere::~Sphere() {
@@ -30,41 +29,23 @@ Sphere::~Sphere() {
 }
 
 void Sphere::init() {
-	if (mode == MODEL_MODE::VERTEX_COLOR)
-		vertexC.resize(((slices + 1) * (stacks + 1)));
-	else if (mode == MODEL_MODE::VERTEX_LIGHT_COLOR)
-		vertexLC.resize(((slices + 1) * (stacks + 1)));
-	else if (mode == MODEL_MODE::VERTEX_LIGHT_TEXTURE)
-		vertexLT.resize(((slices + 1) * (stacks + 1)));
+	vertex.resize(((slices + 1) * (stacks + 1)));
 	index.resize((slices * stacks + slices) * 6);
 	for (int i = 0; i <= stacks; ++i) {
-		float V = i / (float) stacks;
+		float V = i / (float)stacks;
 		float phi = V * M_PI;
 
 		for (int j = 0; j <= slices; ++j) {
-			float U = j / (float) slices;
+			float U = j / (float)slices;
 			float theta = U * M_PI * 2.0;
 
-			float X = cos(theta) * sin(phi);
-			float Y = cos(phi);
-			float Z = sin(theta) * sin(phi);
-			if (mode == MODEL_MODE::VERTEX_COLOR) {
-				vertexC[i * (slices + 1) + j].position = ratio
-						* glm::vec3(X, Y, Z);
-				vertexC[i * (slices + 1) + j].color = glm::vec3(0.0f, 1.0f,
-						0.0f);
-			} else if (mode == MODEL_MODE::VERTEX_LIGHT_COLOR) {
-				vertexLC[i * (slices + 1) + j].position = ratio
-						* glm::vec3(X, Y, Z);
-				vertexLC[i * (slices + 1) + j].color = glm::vec3(0.0f, 1.0f,
-						0.0f);
-				vertexLC[i * (slices + 1) + j].normal = glm::vec3(X, Y, Z);
-			} else if (mode == MODEL_MODE::VERTEX_LIGHT_TEXTURE) {
-				vertexLT[i * (slices + 1) + j].position = ratio
-						* glm::vec3(X, Y, Z);
-				vertexLT[i * (slices + 1) + j].texture = glm::vec2(U, V);
-				vertexLT[i * (slices + 1) + j].normal = glm::vec3(X, Y, Z);
-			}
+			float X = ratio * cos(theta) * sin(phi);
+			float Y = ratio * cos(phi);
+			float Z = ratio * sin(theta) * sin(phi);
+
+			vertex[i * (slices + 1) + j].position = glm::vec3(X, Y, Z);
+			vertex[i * (slices + 1) + j].color = glm::vec3(1.0f, 1.0f, 1.0f);
+			vertex[i * (slices + 1) + j].texCoord = glm::vec2(U, V);
 		}
 	}
 
@@ -83,63 +64,47 @@ void Sphere::load() {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
+
 	glBindVertexArray(VAO);
+
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	size_t stride;
-	size_t offset1 = 0;
-	size_t offset2 = 0;
-	size_t offset3 = 0;
-
-	if (mode == MODEL_MODE::VERTEX_COLOR) {
-		glBufferData(GL_ARRAY_BUFFER, vertexC.size() * sizeof(glm::vec3) * 2,
-				vertexC.data(),
-				GL_STATIC_DRAW);
-		stride = sizeof(vertexC[0]);
-		offset1 = 0;
-	} else if (mode == MODEL_MODE::VERTEX_LIGHT_COLOR) {
-		glBufferData(GL_ARRAY_BUFFER, vertexLC.size() * sizeof(glm::vec3) * 3,
-				vertexLC.data(),
-				GL_STATIC_DRAW);
-		stride = sizeof(vertexLC[0]);
-		offset1 = 0;
-		offset2 = sizeof(vertexLC[0].position);
-		offset3 = sizeof(vertexLC[0].position) + sizeof(vertexLC[0].color);
-	} else if (mode == MODEL_MODE::VERTEX_LIGHT_TEXTURE) {
-		glBufferData(GL_ARRAY_BUFFER,
-				vertexLT.size() * (sizeof(glm::vec3) * 2 + sizeof(glm::vec2)),
-				vertexLT.data(),
-				GL_STATIC_DRAW);
-		stride = sizeof(vertexLT[0]);
-		offset1 = 0;
-		offset2 = sizeof(vertexLT[0].position);
-		offset3 = sizeof(vertexLT[0].position) + sizeof(vertexLT[0].texture);
-	}
+	glBufferData(GL_ARRAY_BUFFER, vertex.size() * (sizeof(glm::vec3) * 2 + sizeof(glm::vec2)),
+		vertex.data(),
+		GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(GLuint), index.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(GLuint),
+		index.data(),
+		GL_STATIC_DRAW);
 
-	// First attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*) offset1);
+	// Position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex[0]),
+		(GLvoid*)0);
 	glEnableVertexAttribArray(0);
-
-	// Second attribute
-	if (mode == MODEL_MODE::VERTEX_LIGHT_TEXTURE)
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*) offset2);
-	else
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*) offset2);
-	    glEnableVertexAttribArray(1);
-
-	// Thrid attribute
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*) offset3);
+	// Color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex[0]),
+		(GLvoid*) sizeof(vertex[0].position));
+	glEnableVertexAttribArray(1);
+	// Texture Attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vertex[0]),
+		(GLvoid*)(sizeof(vertex[0].color) + sizeof(vertex[0].position)));
 	glEnableVertexAttribArray(2);
+
 	glBindVertexArray(0); // Unbind VAO
 
 }
 
 void Sphere::render() {
+
 	glBindVertexArray(VAO);
-	glDrawElements( GL_TRIANGLES, index.size(), GL_UNSIGNED_INT, (GLvoid*) (sizeof(GLuint) * 0));
+	if (wire){
+		glDrawElements(GL_LINES, index.size(), GL_UNSIGNED_INT, (GLvoid*)(sizeof(GLuint) * 0));
+	}
+	else{
+		glDrawElements(GL_TRIANGLES, index.size(), GL_UNSIGNED_INT, (GLvoid*)(sizeof(GLuint) * 0));
+	}
+	
 	glBindVertexArray(0);
+
 }
 

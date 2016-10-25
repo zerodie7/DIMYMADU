@@ -11,6 +11,14 @@
 #include <glm/glm.hpp>
 #include <GL/glew.h>
 
+class ColBol {
+public:
+	static bool contactp1;
+	static bool contactp2;
+	static bool contactp3;
+	static bool npc4go;
+};
+
 typedef struct _VertexColor {
 
 	_VertexColor() {
@@ -24,6 +32,22 @@ typedef struct _VertexColor {
 	glm::vec3 position;
 	glm::vec3 color;
 } VertexColor;
+
+typedef struct _VertexNormalText {
+
+	_VertexNormalText() {
+	}
+
+	_VertexNormalText(glm::vec3 position, glm::vec3 normal, glm::vec2 text) {
+		this->position = position;
+		this->normal = normal;
+		this->textCoord = text;
+	}
+
+	glm::vec3 position;
+	glm::vec3 normal;
+	glm::vec2 textCoord;
+} VertexNormalText;
 
 typedef struct _VertexLightColor {
 

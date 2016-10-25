@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cube.cpp" />
     <ClCompile Include="src\GLApplication.cpp" />
     <ClCompile Include="src\GLFWManager.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
@@ -24,6 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Headers\CameraFPS.h" />
+    <ClInclude Include="src\Headers\collision.h" />
+    <ClInclude Include="src\Headers\Cube.h" />
     <ClInclude Include="src\Headers\definition.h" />
     <ClInclude Include="src\Headers\GLApplication.h" />
     <ClInclude Include="src\Headers\GLFWManager.h" />
@@ -39,6 +42,9 @@
     <ClInclude Include="src\Headers\WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Textures\container2.png" />
+    <Image Include="Textures\container2_specular.png" />
+    <Image Include="Textures\pasto.png" />
     <Image Include="Textures\SUN.jpg" />
     <Image Include="Textures\SUN_SPECULAR.jpg" />
   </ItemGroup>
@@ -47,6 +53,8 @@
     <None Include="Shaders\lampShader.vs" />
     <None Include="Shaders\lightingSpecularMap.fs" />
     <None Include="Shaders\lightingSpecularMap.vs" />
+    <None Include="Shaders\materialLighting.fs" />
+    <None Include="Shaders\materialLighting.vs" />
     <None Include="Shaders\shader.fs" />
     <None Include="Shaders\shader.vs" />
     <None Include="Shaders\sistemascoordenados.fs" />
